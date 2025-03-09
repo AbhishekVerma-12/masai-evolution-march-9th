@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Dashboard</title>
+   <style>
+     #header{
+       display: flex;
+       position: sticky;
+       text-align: center;
+       width: 100%;
+       color: blue;
+       background-color: yellow;
+       justify-content: center;
+     }
+     footer{
+       display: flex;
+       position:fixed;
+       width: 100%;
+       left: 0;
+       bottom: 0;
+       text-align: center;
+       justify-content: center;
+       background-color: red;
+     }
+     #h11{
+       text-align: center;
+     }
+     @media(max-width:768px){
+        #header{
+       display: flex;
+       position: sticky;
+       text-align: center;
+       width: 100%;
+       color: blue;
+       background-color: green;
+       justify-content: left;
+     }
+     footer{
+       display: flex;
+       position:sticky;
+       width: 100%;
+       left: 0;
+       bottom: 0;
+       text-align: center;
+       justify-content: center;
+       background-color: red;
+     }
+     #h11{
+       text-align: left
+     }
+   </style>
+  </head>
+  <body>
+    <header id="header"><h1 id="h11">My Profile</h1></header>
+      <article><h3>I am going to enter My detail</h3></article>
+      <form>
+        <label>Name:</label><input id="name"><br><br>
+        <label>Age:</label><input id="age"><br><br>
+        <label>Email:</label><input id="email"><br><br>
+        <label>Course:</label><input id="course"><br><br>
+        <label>Gender:</label>
+        <select for="gender">
+          <option id="gender">select</option>
+          <option id="gender">Male</option>
+          <option id="gender">Female</option>
+          <option id="gender">Others</option>
+        </select><br><br>
+        <label>Skills:</label><input><br><br>
+        <label>Profile Image Upload:</label><input id="img"><br><br>
+        <button id="submit">Submit</button>
+      </form>
+      <ul id="ul">
+        
+      </ul>
+      <script>
+        const ul=document.getElementById('ul')
+        const name=document.getElementById('name')
+        const age=document.getElementById('age')
+        const email=document.getElementById('email')
+        const course=document.getElementById('course')
+        const gender=document.getElementById('gender')
+        const skills=document.getElementById('skills')
+        const img=document.getElementById('img')
+        const button=document.getElementById('submit')
+        
+        
+        button.addEventListener('click',(event)=>{
+          const list=document.createElement('li')
+          list.textContent=`$${name},$${age},$${email},$${course},$${gender},$${skills},$${img}`
+          ul.appendChild(list)
+          alert(`detais submited`)
+        })
+        
+        const url="https.ijhefyr7d/user.json"
+        fetch(url)
+         .then(res=>res.json())
+         .then(data=>{
+         const result=Object.entries(data).filter(([key,user]))
+         console.log(result)
+        })
+        
+       const c= ul.sort((a,b)=>{
+          return a.name.localeCompare(b.name)
+        })
+        console.log(c)
+      </script>
+      <footer><h3>Check the given entries</h3></footer>
+  </body>
+</html>
